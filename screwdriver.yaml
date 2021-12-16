@@ -1,0 +1,16 @@
+shared:
+  image: node:14
+jobs:
+  job-2:
+    requires: [ ~commit, ~sd@8231:job-1 ]
+    steps:
+      - test: echo "test"
+  job-31:
+    requires: [ ~job-2 ]
+    steps:
+      - test: echo "test"
+  job-32:
+    requires: [ ~job-2 ]
+    steps:
+      - sleep: sleep 10
+      - test: echo "test"
